@@ -18,6 +18,19 @@ app.get('/', function(request, response) {
   response.send(data);
 });
 
+app.get('/screenshot-1.jpg', function(request, response) {
+  var data = fs.readFileSync('screenshot-1.jpg').toString();
+  response.send(data);
+});
+app.get('/screenshot-2.jpg', function(request, response) {
+  var data = fs.readFileSync('screenshot-2.jpg').toString();
+  response.send(data);
+});
+app.get('/screenshot-3.jpg', function(request, response) {
+  var data = fs.readFileSync('screenshot-3.jpg').toString();
+  response.send(data);
+});
+
 // Render example.com/orders
 app.get('/orders', function(request, response) {
   global.db.Order.findAll().success(function(orders) {
