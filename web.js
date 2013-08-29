@@ -20,14 +20,17 @@ app.get('/', function(request, response) {
 
 app.get('/screenshot-1.jpg', function(request, response) {
   var data = fs.readFileSync('screenshot-1.jpg').toString();
+  response.setHeader("Content-Type", "image/jpeg");
   response.send(data);
 });
 app.get('/screenshot-2.jpg', function(request, response) {
   var data = fs.readFileSync('screenshot-2.jpg').toString();
+  response.setHeader("Content-Type", "image/jpeg");
   response.send(data);
 });
 app.get('/screenshot-3.jpg', function(request, response) {
   var data = fs.readFileSync('screenshot-3.jpg').toString();
+  response.setHeader("Content-Type", "image/jpeg");
   response.send(data);
 });
 
