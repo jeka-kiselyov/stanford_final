@@ -12,6 +12,11 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
 
+var images = {};
+images.s1 = fs.readFileSync('screenshot-1.jpg').toString();
+images.s2 = fs.readFileSync('screenshot-2.jpg');
+images.s3 = fs.readFileSync('screenshot-3.jpg').toString();
+
 // Render homepage (note trailing slash): example.com/
 app.get('/', function(request, response) {
   var data = fs.readFileSync('index.html').toString();
@@ -19,19 +24,18 @@ app.get('/', function(request, response) {
 });
 
 app.get('/screenshot-1.jpg', function(request, response) {
-  var data = fs.readFileSync('screenshot-1.jpg').toString();
   response.setHeader("Content-Type", "image/jpeg");
-  response.send(data);
+  response.send(images.s1);
 });
 app.get('/screenshot-2.jpg', function(request, response) {
   var data = fs.readFileSync('screenshot-2.jpg').toString();
   response.setHeader("Content-Type", "image/jpeg");
-  response.send(data);
+  response.send(images.s2);
 });
 app.get('/screenshot-3.jpg', function(request, response) {
   var data = fs.readFileSync('screenshot-3.jpg').toString();
   response.setHeader("Content-Type", "image/jpeg");
-  response.send(data);
+  response.send(images.s3);
 });
 
 // Render example.com/orders
